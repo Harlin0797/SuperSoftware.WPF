@@ -21,5 +21,6 @@ namespace SuperSoftware.WPF.Converters
         {
             return null;
         }
+
     }
 }
