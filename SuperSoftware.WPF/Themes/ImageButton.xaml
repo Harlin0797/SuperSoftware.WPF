@@ -1,0 +1,182 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:SuperSoftware.WPF.Controls"
+                    xmlns:converters="clr-namespace:SuperSoftware.WPF.Converters"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+
+    <ResourceDictionary.MergedDictionaries>
+        <!--<ResourceDictionary Source="pack://application:,,,/SuperSoftware.WPF;component/Styles/Colors.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SuperSoftware.WPF;component/Styles/Fonts.xaml" />-->
+        <!--<ResourceDictionary Source="pack://application:,,,/SuperSoftware.WPF;component/Styles/Controls.xaml" />-->
+    </ResourceDictionary.MergedDictionaries>
+
+    <converters:VisibilityConverter x:Key="VisibilityConverter" />
+
+    <Style TargetType="{x:Type controls:ImageButton}">
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="Background"
+                Value="LightGray" />
+        <Setter Property="Foreground"
+                Value="LightGray" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="BorderBrush"
+                Value="DarkGray" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:ImageButton}">
+                    <!--<Grid>-->
+                    <!--<Rectangle x:Name="LayoutRoot"
+                                   Fill="{TemplateBinding Background}"
+                                   Effect="{TemplateBinding DropShadowEffect}"
+                    x:Name="border"
+                             BorderBrush="{TemplateBinding BorderBrush}"
+                             BorderThickness="{TemplateBinding BorderThickness}"
+                             Background="{TemplateBinding Background}"
+                             CornerRadius="{TemplateBinding CornerRadius}"
+                             Effect="{TemplateBinding Effect}"/>-->
+                    <Border  x:Name="border"
+                             BorderBrush="{TemplateBinding BorderBrush}"
+                             BorderThickness="{TemplateBinding BorderThickness}"
+                             Background="{TemplateBinding Background}"
+                             CornerRadius="{TemplateBinding CornerRadius}"
+                             Effect="{TemplateBinding Effect}">
+
+                        <!--<Border.Effect>
+
+                                -->
+                        <!--<DropShadowEffect Opacity="0.5"
+                                              ShadowDepth="{TemplateBinding ShadowDepth}"
+                                              BlurRadius="10"
+                                              Color="LightGray"
+                                              RenderingBias="Performance"></DropShadowEffect>-->
+                        <!--
+                                <DropShadowEffect x:Name="ropShadowEffect"></DropShadowEffect>
+                            </Border.Effect>-->
+
+                        <!--CornerRadius="{TemplateBinding CornerRadius}"-->
+
+                        <!--<Grid x:Name="mainGird" VerticalAlignment="Center" Background="AliceBlue">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>-->
+                        <StackPanel x:Name="RootStackPanel"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <Image  x:Name="image"
+                                    Margin="{TemplateBinding ImageMargin}"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Source="{TemplateBinding Image}"
+                                    Width="{TemplateBinding ImageWidth}"
+                                    Height="{TemplateBinding ImageHeight}"
+                                    Visibility="{TemplateBinding Image,Converter={StaticResource VisibilityConverter}}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            <!--<TextBlock x:Name="contentText"
+                                       Text="{TemplateBinding Content}"
+                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                       
+                                       Margin="{TemplateBinding Padding}"
+                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       Grid.Column="0" />-->
+                            <ContentPresenter x:Name="contentText"
+                                              Grid.Row="0"
+                                              Grid.Column="1"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </StackPanel>
+
+                        <!--</Grid>-->
+
+                        <!--
+                        <TextBlock x:Name="contentText"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   Margin="{TemplateBinding Padding}"
+                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   Grid.Column="0" />-->
+
+                    </Border>
+                    <!--</Grid>-->
+                    <!--<DataTemplate>
+                        <Grid>
+
+                        </Grid>
+                    </DataTemplate>-->
+
+                    <ControlTemplate.Triggers>
+                        <!--<Trigger Property="IsDefaulted"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                        </Trigger>-->
+                        <Trigger Property="IsMouseOver"
+                                 Value="true">
+                            <!--<Setter  TargetName="border"
+                                     Property="Background"
+                                     Value="{Binding MouseOverBackground}" />-->
+                            <Setter  TargetName="border"
+                                     
+                                     Value="{Binding MouseOverBackground ,Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                            <Setter  TargetName="border"
+                                     Property="Background"
+                                     Value="{Binding MouseOverBackground ,Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <!--<Setter   TargetName="border"
+                                      Property="Effect"
+                                      Value="{x:Null}" />-->
+                        </Trigger>
+                        <!--<Trigger Property="IsPressed"
+                                 Value="true">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource Button.Pressed.Background}" />
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="{StaticResource Button.Pressed.Border}" />
+                        </Trigger>-->
+                        <!--<Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource Button.Disabled.Background}" />
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="{StaticResource Button.Disabled.Border}" />
+                            <Setter Property="TextElement.Foreground"
+                                    TargetName="contentText"
+                                    Value="{StaticResource Button.Disabled.Foreground}" />
+                            <Setter Property="Opacity"
+                                    TargetName="image"
+                                    Value="0.1" />
+
+                        </Trigger>-->
+                    </ControlTemplate.Triggers>
+                    <!--<DataTemplate.>
+                        <DataTrigger  >
+                            <Setter TargetName="border" Property ="te"></Setter>
+                        </DataTrigger>
+                    </DataTemplate.>-->
+
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

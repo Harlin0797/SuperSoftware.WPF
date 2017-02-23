@@ -1,0 +1,53 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SuperSoftware.WPF.Smaples"
+        xmlns:controls="clr-namespace:SuperSoftware.WPF.Controls;assembly=SuperSoftware.WPF"
+        x:Class="SuperSoftware.WPF.Smaples.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="350"
+        Width="525">
+    <!--<Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/SuperSoftware.WPF;component/Styles/Controls.xaml" />
+    </Window.Resources>-->
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="136*" />
+            <RowDefinition Height="183*" />
+        </Grid.RowDefinitions>
+        <controls:ImageButton Grid.Row="0"
+                              Background="LightGray"
+                              BorderThickness="1"
+                              BorderBrush="Gray"
+                              CornerRadius="4"
+                              Image="logo.ico"
+                              ImageHeight="25"
+                              ImageWidth="25"
+                              ImageMargin="10 0 25 0"
+                              Content="影音讲解"
+                              
+                              Padding="0 0 0 0"
+                              IsDefault="True"
+                             
+                              Margin="131,22,153,70">
+        </controls:ImageButton>
+        <Button x:Name="button"
+                Content="Button"
+                HorizontalAlignment="Left"
+                Margin="182,96,0,0"
+                VerticalAlignment="Top"
+                Effect="{DynamicResource DropShadowBrush}"
+                Width="76"
+                Background="#FFDDDDDD" />
+
+        <!--<wpf:ImageButton x:Name="imageButton"
+                         Grid.Row="0" />-->
+        <!--<WpfCustomControlLibrary1:CustomControl1   Grid.Row="1"
+                                                   Background="Yellow"
+                                                   CornerRadius="80" />-->
+
+    </Grid>
+</Window>
