@@ -21,7 +21,9 @@ namespace SuperSoftware.WPF.Controls
     /// </summary>
     public class ImageButton : Button
     {
-
+        /// <summary>
+        /// 静态构造重写默认样式元数据
+        /// </summary>
         static ImageButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ImageButton), new FrameworkPropertyMetadata(typeof(ImageButton)));
@@ -104,9 +106,8 @@ namespace SuperSoftware.WPF.Controls
         }
 
         public static readonly DependencyProperty MouseOverBackgroundProperty =
-            DependencyProperty.Register("MouseOverBackground", typeof(Brush), typeof(ImageButton), new PropertyMetadata(null));
-
-
+            DependencyProperty.Register("MouseOverBackground", typeof(Brush), typeof(ImageButton),
+                new PropertyMetadata(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFBEE6FD"))));
 
         /// <summary>
         /// 获取或设置鼠标悬停的边框
@@ -118,7 +119,8 @@ namespace SuperSoftware.WPF.Controls
         }
 
         public static readonly DependencyProperty MouseOverBorderBrushProperty =
-            DependencyProperty.Register("MouseOverBorderBrush", typeof(Brush), typeof(ImageButton), new PropertyMetadata(null));
+            DependencyProperty.Register("MouseOverBorderBrush", typeof(Brush), typeof(ImageButton),
+                new PropertyMetadata(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF3C7FB1"))));
 
         /// <summary>
         /// 获取或设置鼠标悬停的前景
@@ -130,10 +132,100 @@ namespace SuperSoftware.WPF.Controls
         }
 
         public static readonly DependencyProperty MouseOverForegroundProperty =
-            DependencyProperty.Register("MouseOverForeground", typeof(Brush), typeof(ImageButton), new PropertyMetadata(null));
+            DependencyProperty.Register("MouseOverForeground", typeof(Brush), typeof(ImageButton),
+                new PropertyMetadata(new SolidColorBrush(SystemColors.ControlTextColor)));
 
 
         #endregion
+
+        #region 鼠标按下相关
+
+        /// <summary>
+        /// 获取或设置鼠标按下的背景
+        /// </summary>
+        public Brush PressedBackground
+        {
+            get { return (Brush)GetValue(PressedBackgroundProperty); }
+            set { SetValue(PressedBackgroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty PressedBackgroundProperty =
+            DependencyProperty.Register("PressedBackground", typeof(Brush), typeof(ImageButton),
+                   new PropertyMetadata(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC4E5F6"))));
+
+        /// <summary>
+        /// 获取或设置鼠标按下的边框
+        /// </summary>
+        public Brush PressedBorderBrush
+        {
+            get { return (Brush)GetValue(PressedBorderBrushProperty); }
+            set { SetValue(PressedBorderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty PressedBorderBrushProperty =
+            DependencyProperty.Register("PressedBorderBrush", typeof(Brush), typeof(ImageButton),
+                 new PropertyMetadata(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF2C628B"))));
+
+        /// <summary>
+        /// 获取或设置鼠标按下的前景
+        /// </summary>
+        public Brush PressedForeground
+        {
+            get { return (Brush)GetValue(PressedForegroundProperty); }
+            set { SetValue(PressedForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty PressedForegroundProperty =
+            DependencyProperty.Register("PressedForeground", typeof(Brush), typeof(ImageButton),
+                new PropertyMetadata(new SolidColorBrush(SystemColors.ControlTextColor)));
+
+
+        #endregion
+
+
+        #region 不可用相关
+
+        /// <summary>
+        /// 获取或设置不可用的背景
+        /// </summary>
+        public Brush DisabledBackground
+        {
+            get { return (Brush)GetValue(DisabledBackgroundProperty); }
+            set { SetValue(DisabledBackgroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisabledBackgroundProperty =
+            DependencyProperty.Register("DisabledBackground", typeof(Brush), typeof(ImageButton),
+                   new PropertyMetadata(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F4"))));
+
+        /// <summary>
+        /// 获取或设置不可用的边框
+        /// </summary>
+        public Brush DisabledBorderBrush
+        {
+            get { return (Brush)GetValue(DisabledBorderBrushProperty); }
+            set { SetValue(DisabledBorderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisabledBorderBrushProperty =
+            DependencyProperty.Register("DisabledBorderBrush", typeof(Brush), typeof(ImageButton),
+                  new PropertyMetadata(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFADB2B5"))));
+
+        /// <summary>
+        /// 获取或设置不可用的前景
+        /// </summary>
+        public Brush DisabledForeground
+        {
+            get { return (Brush)GetValue(DisabledForegroundProperty); }
+            set { SetValue(DisabledForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisabledForegroundProperty =
+            DependencyProperty.Register("DisabledForeground", typeof(Brush), typeof(ImageButton),
+                  new PropertyMetadata(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF838383"))));
+
+        #endregion
+
 
         //HorizontalAlignment
         //#region 阴影相关

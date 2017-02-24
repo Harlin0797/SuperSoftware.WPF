@@ -12,36 +12,113 @@
     <!--<Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/SuperSoftware.WPF;component/Styles/Controls.xaml" />
     </Window.Resources>-->
+    <Window.Resources>
 
+        <RadialGradientBrush  x:Key="Button.Static.Background">
+            <!--<GradientStop Color="#FFEAEAE2" />
+            <GradientStop Color="#FF0FB1EE"
+                          Offset="1" />-->
+            <GradientStop Color="#FFEAEAE2" />
+            <GradientStop Color="#FFD35EC8"
+                          Offset="1" />
+        </RadialGradientBrush>
+
+        <!--<SolidColorBrush x:Key="Button.Static.Background"
+                         Color="#FFDDDDDD" />-->
+        <SolidColorBrush x:Key="Button.Static.Border"
+                         Color="#FF707070" />
+        <SolidColorBrush x:Key="Button.MouseOver.Background"
+                         Color="#FFBEE6FD" />
+        <SolidColorBrush x:Key="Button.MouseOver.Border"
+                         Color="#FF3C7FB1" />
+        <SolidColorBrush x:Key="Button.Pressed.Background"
+                         Color="#FFC4E5F6" />
+        <SolidColorBrush x:Key="Button.Pressed.Border"
+                         Color="#FF2C628B" />
+        <SolidColorBrush x:Key="Button.Disabled.Background"
+                         Color="#FFF4F4F4" />
+        <SolidColorBrush x:Key="Button.Disabled.Border"
+                         Color="#FFADB2B5" />
+        <SolidColorBrush x:Key="Button.Disabled.Foreground"
+                         Color="#FF838383" />
+
+    </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="136*" />
-            <RowDefinition Height="183*" />
-        </Grid.RowDefinitions>
-        <controls:ImageButton Grid.Row="0"
-                              Background="LightGray"
-                              BorderThickness="1"
-                              BorderBrush="Gray"
-                              CornerRadius="4"
-                              Image="logo.ico"
-                              ImageHeight="25"
-                              ImageWidth="25"
-                              ImageMargin="10 0 25 0"
-                              Content="影音讲解"
-                              
-                              Padding="0 0 0 0"
-                              IsDefault="True"
-                             
-                              Margin="131,22,153,70">
-        </controls:ImageButton>
-        <Button x:Name="button"
+        <StackPanel>
+            <controls:ImageButton Width="200"
+                                  Margin="0 5"
+                                  Background="{StaticResource Button.Static.Background}"
+                                  Content="ImageButton样式">
+            </controls:ImageButton>
+
+            <Button Width="200"
+                    Margin="0 5"
+                    Content="系统默认" />
+
+            <controls:ImageButton Width="200"
+                                  Margin="0 5"
+                                  Content="ImageButton默认">
+            </controls:ImageButton>
+
+            <controls:ImageButton Width="200"
+                                  Margin="0 5"
+                                  Image="logo.ico"
+                                  Content="ImageButton默认">
+            </controls:ImageButton>
+
+            <controls:ImageButton Width="200"
+                                  Margin="0 5"
+                                  Image="logo.ico"
+                                  ImageHeight="25"
+                                  ImageWidth="25"
+                                  Content="ImageButton设置大小">
+            </controls:ImageButton>
+
+            <controls:ImageButton Width="200"
+                                  Margin="0 5"
+                                  Image="logo.ico"
+                                  ImageHeight="25"
+                                  ImageWidth="25"
+                                  CornerRadius="4"
+                                  Content="ImageButton圆角">
+            </controls:ImageButton>
+
+            <controls:ImageButton Width="200"
+                                  Margin="0 5"
+                                  BorderThickness="2"
+                                  Background="DeepSkyBlue"
+                                  Foreground="DarkBlue"
+                                  BorderBrush="BlueViolet"
+                                  MouseOverBackground="DarkRed"
+                                  MouseOverBorderBrush="OrangeRed"
+                                  MouseOverForeground="AliceBlue"
+                                  CornerRadius="8"
+                                  Image="logo.ico"
+                                  ImageHeight="25"
+                                  ImageWidth="25"
+                                  ImageMargin="10 0 25 0"
+                                  Content="影音讲解"
+                                  Padding="0 0 0 0"
+                                  IsDefault="True">
+            </controls:ImageButton>
+
+            <controls:ImageButton Width="200"
+                                  Margin="0 5"
+                                  IsEnabled="False"
+                                  Content="ImageButton默认不可用">
+            </controls:ImageButton>
+
+        </StackPanel>
+
+        <!--<Button x:Name="button"
                 Content="Button"
                 HorizontalAlignment="Left"
-                Margin="182,96,0,0"
+                Margin="182,127,0,0"
                 VerticalAlignment="Top"
                 Effect="{DynamicResource DropShadowBrush}"
                 Width="76"
-                Background="#FFDDDDDD" />
+                Background="#FFDDDDDD"
+                Grid.RowSpan="2" />-->
 
         <!--<wpf:ImageButton x:Name="imageButton"
                          Grid.Row="0" />-->

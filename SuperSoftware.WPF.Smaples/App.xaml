@@ -6,10 +6,16 @@
     <Application.Resources>
 
         <!--<ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="pack://application:,,,/SuperSoftware.WPF;component/Styles/Colors.xaml" />
-            <ResourceDictionary Source="pack://application:,,,/SuperSoftware.WPF;component/Styles/Fonts.xaml" />-->
-        <ResourceDictionary Source="pack://application:,,,/SuperSoftware.WPF;component/Styles/Controls.xaml" />
-        <!--</ResourceDictionary.MergedDictionaries>-->
+            --><!--<ResourceDictionary Source="pack://application:,,,/SuperSoftware.WPF;component/Styles/Colors.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/SuperSoftware.WPF;component/Styles/Fonts.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SuperSoftware.WPF;component/Styles/Controls.xaml" />--><!--
+
+            <RadialGradientBrush>
+                <GradientStop Color="#FFEAEAE2" />
+                <GradientStop Color="#FF0FB1EE"
+                              Offset="1" />
+            </RadialGradientBrush>
+        </ResourceDictionary.MergedDictionaries>-->
 
     </Application.Resources>
 </Application>

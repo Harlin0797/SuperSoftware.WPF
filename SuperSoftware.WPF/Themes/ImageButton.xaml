@@ -9,22 +9,22 @@
         <ResourceDictionary Source="pack://application:,,,/SuperSoftware.WPF;component/Styles/Fonts.xaml" />-->
         <!--<ResourceDictionary Source="pack://application:,,,/SuperSoftware.WPF;component/Styles/Controls.xaml" />-->
     </ResourceDictionary.MergedDictionaries>
-
     <converters:VisibilityConverter x:Key="VisibilityConverter" />
-
     <Style TargetType="{x:Type controls:ImageButton}">
+        <Setter Property="Background"
+                Value="#FFDDDDDD" />
+        <Setter Property="BorderBrush"
+                Value="#FF707070" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="BorderThickness"
+                Value="1" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Center" />
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
-        <Setter Property="Background"
-                Value="LightGray" />
-        <Setter Property="Foreground"
-                Value="LightGray" />
-        <Setter Property="BorderThickness"
+        <Setter Property="Padding"
                 Value="1" />
-        <Setter Property="BorderBrush"
-                Value="DarkGray" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:ImageButton}">
@@ -42,8 +42,8 @@
                              BorderBrush="{TemplateBinding BorderBrush}"
                              BorderThickness="{TemplateBinding BorderThickness}"
                              Background="{TemplateBinding Background}"
-                             CornerRadius="{TemplateBinding CornerRadius}"
-                             Effect="{TemplateBinding Effect}">
+                             SnapsToDevicePixels="true"
+                             CornerRadius="{TemplateBinding CornerRadius}">
 
                         <!--<Border.Effect>
 
@@ -68,36 +68,35 @@
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>-->
-                        <StackPanel x:Name="RootStackPanel"
+                        <StackPanel x:Name="stackPanel"
                                     Orientation="Horizontal"
                                     HorizontalAlignment="Center"
-                                    VerticalAlignment="Center">
+                                    VerticalAlignment="Center"
+                                    Margin="{TemplateBinding Padding}">
                             <Image  x:Name="image"
                                     Margin="{TemplateBinding ImageMargin}"
-                                    Grid.Row="0"
-                                    Grid.Column="0"
                                     Source="{TemplateBinding Image}"
                                     Width="{TemplateBinding ImageWidth}"
                                     Height="{TemplateBinding ImageHeight}"
                                     Visibility="{TemplateBinding Image,Converter={StaticResource VisibilityConverter}}"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                            <!--<TextBlock x:Name="contentText"
-                                       Text="{TemplateBinding Content}"
-                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                       
-                                       Margin="{TemplateBinding Padding}"
-                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                       Grid.Column="0" />-->
-                            <ContentPresenter x:Name="contentText"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            <ContentPresenter x:Name="contentPresenter"
+                                              Focusable="False"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+                            <!--<ContentPresenter x:Name="contentText"
                                               Grid.Row="0"
                                               Grid.Column="1"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               Margin="{TemplateBinding Padding}"
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />-->
                         </StackPanel>
 
                         <!--</Grid>-->
@@ -117,62 +116,61 @@
 
                         </Grid>
                     </DataTemplate>-->
-
                     <ControlTemplate.Triggers>
-                        <!--<Trigger Property="IsDefaulted"
+                        <Trigger Property="IsDefaulted"
                                  Value="true">
                             <Setter Property="BorderBrush"
                                     TargetName="border"
                                     Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                        </Trigger>-->
+                        </Trigger>
                         <Trigger Property="IsMouseOver"
                                  Value="true">
-                            <!--<Setter  TargetName="border"
-                                     Property="Background"
-                                     Value="{Binding MouseOverBackground}" />-->
-                            <Setter  TargetName="border"
-                                     
-                                     Value="{Binding MouseOverBackground ,Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
-
                             <Setter  TargetName="border"
                                      Property="Background"
-                                     Value="{Binding MouseOverBackground ,Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <!--<Setter   TargetName="border"
-                                      Property="Effect"
-                                      Value="{x:Null}" />-->
-                        </Trigger>
-                        <!--<Trigger Property="IsPressed"
-                                 Value="true">
-                            <Setter Property="Background"
-                                    TargetName="border"
-                                    Value="{StaticResource Button.Pressed.Background}" />
-                            <Setter Property="BorderBrush"
-                                    TargetName="border"
-                                    Value="{StaticResource Button.Pressed.Border}" />
-                        </Trigger>-->
-                        <!--<Trigger Property="IsEnabled"
-                                 Value="false">
-                            <Setter Property="Background"
-                                    TargetName="border"
-                                    Value="{StaticResource Button.Disabled.Background}" />
-                            <Setter Property="BorderBrush"
-                                    TargetName="border"
-                                    Value="{StaticResource Button.Disabled.Border}" />
+                                     Value="{Binding MouseOverBackground,Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter  TargetName="border"
+                                     Property="BorderBrush"
+                                     Value="{Binding MouseOverBorderBrush ,Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <!--<Setter  TargetName="image"
+                                     Property="Source"
+                                     Value="{Binding Image ,Mode=OneWay}" />-->
                             <Setter Property="TextElement.Foreground"
-                                    TargetName="contentText"
-                                    Value="{StaticResource Button.Disabled.Foreground}" />
-                            <Setter Property="Opacity"
-                                    TargetName="image"
-                                    Value="0.1" />
+                                    TargetName="contentPresenter"
+                                    Value="{Binding MouseOverForeground ,Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="true">
+                            <Setter  TargetName="border"
+                                     Property="Background"
+                                     Value="{Binding PressedBackground,Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter  TargetName="border"
+                                     Property="BorderBrush"
+                                     Value="{Binding PressedBorderBrush ,Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <!--<Setter  TargetName="stackPanel"
+                                     Property="Margin"
+                                     Value="{TemplateBinding Margin+1 }" />-->
 
-                        </Trigger>-->
+                            <Setter Property="TextElement.Foreground"
+                                    TargetName="contentPresenter"
+                                    Value="{Binding PressedForeground ,Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter  TargetName="border"
+                                     Property="Background"
+                                     Value="{Binding DisabledBackground,Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter  TargetName="border"
+                                     Property="BorderBrush"
+                                     Value="{Binding DisabledBorderBrush ,Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <!--<Setter  TargetName="image"
+                                     Property="Source"
+                                     Value="{Binding Image ,Mode=OneWay}" />-->
+                            <Setter Property="TextElement.Foreground"
+                                    TargetName="contentPresenter"
+                                    Value="{Binding DisabledForeground ,Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
-                    <!--<DataTemplate.>
-                        <DataTrigger  >
-                            <Setter TargetName="border" Property ="te"></Setter>
-                        </DataTrigger>
-                    </DataTemplate.>-->
-
                 </ControlTemplate>
 
             </Setter.Value>
